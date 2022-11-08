@@ -67,6 +67,39 @@ class _ListPerusahaanState extends State<ListPerusahaan> {
     final double width = size.width * 0.6;
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Data Perusahaan",
+          style: TextStyle(
+            fontSize: 22,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: Icon(Icons.notifications_rounded),
+        //     color: Colors.black,
+        //   ),
+        //   IconButton(
+        //     onPressed: () {
+        //       _scaffoldKey.currentState?.openDrawer();
+        //     },
+        //     icon: Icon(Icons.menu),
+        //     color: Colors.black,
+        //   ),
+        // ],
+      ),
       backgroundColor: Colors.indigo.shade50,
       body: ListView(
         // scrollDirection: Axis.vertical,

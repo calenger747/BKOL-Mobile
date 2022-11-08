@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors, unused_import, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
+import 'package:bkol_mobile/navbar.dart';
 import 'package:bkol_mobile/pages/homescreen/list_perusahaan.dart';
 import 'package:bkol_mobile/pages/homescreen/lowongan.dart';
 import 'package:bkol_mobile/pages/homescreen/home_page.dart';
 import 'package:bkol_mobile/pages/homescreen/information_page.dart';
 import 'package:bkol_mobile/pages/login_page.dart';
 import 'package:bkol_mobile/pages/widgets/appbar_home.dart';
+import 'package:bkol_mobile/widgets/state_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -43,16 +45,63 @@ class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
   final screens = [
     HomePage(),
-    ListLowonganAll(),
+    StatePage(page: 'chat'),
     InformationPage(),
-    ListPerusahaan(),
+    StatePage(page: 'login'),
   ];
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarHome(
-        title: widget.title,
+      key: _scaffoldKey,
+      drawer: NavBar(),
+      appBar: AppBar(
+        title: RichText(
+          textAlign: TextAlign.left,
+          text: TextSpan(
+            text: widget.title,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+            // ignore: prefer_const_literals_to_create_immutables
+            children: <TextSpan>[
+              TextSpan(
+                text: '\nDINAS TENAGA KERJA DEPOK',
+                style: TextStyle(
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+        ),
+        elevation: 10,
+        backgroundColor: Colors.white,
+        leading: Container(
+          padding: EdgeInsets.only(
+            left: 20,
+            top: 5,
+            bottom: 5,
+            right: 0,
+          ),
+          child: Image.asset('assets/images/icon.png'),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications_rounded),
+            color: Colors.black,
+          ),
+          IconButton(
+            onPressed: () {
+              _scaffoldKey.currentState?.openDrawer();
+            },
+            icon: Icon(Icons.menu),
+            color: Colors.black,
+          ),
+        ],
       ),
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
@@ -77,9 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Home',
             ),
             NavigationDestination(
-              icon: FaIcon(FontAwesomeIcons.newspaper),
-              selectedIcon: FaIcon(FontAwesomeIcons.solidNewspaper),
-              label: 'Lowongan',
+              icon: Icon(Icons.chat_outlined),
+              selectedIcon: Icon(Icons.chat_rounded),
+              label: 'Chat',
             ),
             NavigationDestination(
               icon: Icon(Icons.announcement_outlined),
@@ -87,9 +136,9 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Informasi',
             ),
             NavigationDestination(
-              icon: FaIcon(FontAwesomeIcons.building),
-              selectedIcon: FaIcon(FontAwesomeIcons.hotel),
-              label: 'Data Perusahaan',
+              icon: Icon(Icons.settings_outlined),
+              selectedIcon: Icon(Icons.settings_rounded),
+              label: 'Login',
             ),
           ],
         ),

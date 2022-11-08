@@ -34,15 +34,15 @@ class AppBarHome extends StatelessWidget with PreferredSizeWidget {
       ),
       elevation: 10,
       backgroundColor: Colors.white,
-      leading: Container(
-        padding: EdgeInsets.only(
-          left: 20,
-          top: 5,
-          bottom: 5,
-          right: 0,
-        ),
-        child: Image.asset('assets/images/icon.png'),
-      ),
+      // leading: Container(
+      //   padding: EdgeInsets.only(
+      //     left: 20,
+      //     top: 5,
+      //     bottom: 5,
+      //     right: 0,
+      //   ),
+      //   child: Image.asset('assets/images/icon.png'),
+      // ),
       actions: [
         IconButton(
           onPressed: () {},

@@ -4,6 +4,8 @@ import 'package:bkol_mobile/pages/homescreen/information_page.dart';
 import 'package:bkol_mobile/pages/homescreen/lowongan.dart';
 import 'package:bkol_mobile/pages/homescreen/training_page.dart';
 import 'package:bkol_mobile/pages/login_page.dart';
+import 'package:bkol_mobile/pages/register_page.dart';
+import 'package:bkol_mobile/pages/widgets/list_lowongan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -41,16 +43,29 @@ class _MyButtonState extends State<MyButton> {
                 backgroundColor: Colors.blue.shade100,
                 onPressed: () {
                   if (widget.state == 1) {
-                    _bottomSheetRegistration(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                    );
                   } else if (widget.state == 2) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TrainingPage()),
+                      MaterialPageRoute(
+                        builder: (context) => ListLowonganAll(
+                          title: 'Loker Depok',
+                          page: 'inside',
+                        ),
+                      ),
                     );
                   } else if (widget.state == 3) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      MaterialPageRoute(
+                        builder: (context) => ListLowonganAll(
+                          title: 'Loker Luar Depok',
+                          page: 'outside',
+                        ),
+                      ),
                     );
                   }
                 },

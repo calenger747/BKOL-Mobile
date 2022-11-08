@@ -3,6 +3,8 @@
 import 'dart:ui';
 
 import 'package:bkol_mobile/main.dart';
+import 'package:bkol_mobile/pages/forgot_password.dart';
+import 'package:bkol_mobile/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -16,139 +18,210 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final login_type = ['Perusahaan', 'Pencari Kerja'];
+  String? value;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'BKOL Login Page',
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: SizedBox(
-            width: double.infinity,
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 200,
-                  left: -100,
-                  child: Container(
-                    width: 300,
-                    height: 300,
-                    decoration: BoxDecoration(
-                      color: Color(0x304599ff),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(150),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) =>
+                MyHomePage(title: 'BURSA KERJA ONLINE'),
+          ),
+        );
+        return false;
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'BKOL Login Page',
+        home: Scaffold(
+          backgroundColor: Colors.white,
+          body: SingleChildScrollView(
+            child: SizedBox(
+              width: double.infinity,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 200,
+                    left: -100,
+                    child: Container(
+                      width: 300,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        color: Color(0x304599ff),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(150),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  right: -10,
-                  child: Container(
-                    width: 200,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      color: Color(0x30cc33ff),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(100),
+                  Positioned(
+                    bottom: 10,
+                    right: -10,
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: Color(0x30cc33ff),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(100),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                      sigmaX: 80,
-                      sigmaY: 80,
+                  Positioned(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(
+                        sigmaX: 80,
+                        sigmaY: 80,
+                      ),
+                      child: Container(),
                     ),
-                    child: Container(),
                   ),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 100,
-                        ),
-                        _logo(),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        _loginLabel(),
-                        SizedBox(
-                          height: 60,
-                        ),
-                        _labelTextInput('Username', 'Username', false),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        _labelTextInput('Password', '******', true),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Color(0xff008fff),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 100,
+                          ),
+                          _logo(),
+                          SizedBox(
+                            height: 50,
+                          ),
+                          _loginLabel(),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          Container(
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButtonFormField<String>(
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                  hintText: "Pilihan Login",
+                                  labelText: "Pilihan Login",
+                                ),
+                                value: value,
+                                isExpanded: true,
+                                items: login_type.map(login_typeList).toList(),
+                                onChanged: (value) =>
+                                    setState(() => this.value = value),
+                              ),
                             ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MyHomePage(
-                                    title: 'BURSA KERJA ONLINE',
+                          SizedBox(
+                            height: 30,
+                          ),
+                          _labelTextInput(
+                              'Username', 'Username', Icon(Icons.group), false),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          _labelTextInput(
+                              'Password', '******', Icon(Icons.password), true),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: Color(0xff008fff),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MyHomePage(
+                                      title: 'BURSA KERJA ONLINE',
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              "Login",
-                              style: GoogleFonts.capriola(
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 24,
+                                );
+                              },
+                              child: Text(
+                                "Login",
+                                style: GoogleFonts.capriola(
+                                  textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 24,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 90,
-                        ),
-                        _signUpLabel("Tidak Memiliki Akun?", Color(0xff909090)),
-                        SizedBox(
-                          height: 0,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            _bottomSheetRegistration(context);
-                          },
-                          child: _signUpLabel("Daftar", Color(0xff164276)),
-                        ),
-                        SizedBox(
-                          height: 75,
-                        ),
-                      ],
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              // _bottomSheetRegistration(context);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ForgotPassword()),
+                              );
+                            },
+                            child: _signUpLabel(
+                                "Lupa Password?", Color(0xff164276)),
+                          ),
+                          SizedBox(
+                            height: 45,
+                          ),
+                          _signUpLabel(
+                              "Tidak Memiliki Akun?", Color(0xff909090)),
+                          SizedBox(
+                            height: 0,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              // _bottomSheetRegistration(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()),
+                              );
+                            },
+                            child: _signUpLabel("Daftar", Color(0xff164276)),
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
+
+  DropdownMenuItem<String> login_typeList(String item) => DropdownMenuItem(
+        child: Text(
+          item,
+          style: TextStyle(
+            fontSize: 13,
+          ),
+        ),
+        value: item,
+      );
 
   _bottomSheetRegistration(context) {
     showModalBottomSheet(
@@ -235,40 +308,19 @@ Widget _loginLabel() {
   );
 }
 
-Widget _labelTextInput(String label, String hintText, bool isPassword) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        label,
-        style: GoogleFonts.capriola(
-          textStyle: TextStyle(
-            color: Color(0xff8fa1b6),
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-          ),
+Widget _labelTextInput(
+    String label, String hintText, Icon icons, bool isPassword) {
+  return TextFormField(
+    decoration: InputDecoration(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
         ),
       ),
-      TextField(
-        obscureText: isPassword,
-        cursorColor: Colors.red,
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: GoogleFonts.capriola(
-            textStyle: TextStyle(
-              color: Color(0xffc5d2e1),
-              fontWeight: FontWeight.w400,
-              fontSize: 20,
-            ),
-          ),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Color(0xffdfe8f3),
-            ),
-          ),
-        ),
-      )
-    ],
+      hintText: hintText,
+      labelText: label,
+      prefixIcon: icons,
+    ),
   );
 }
 

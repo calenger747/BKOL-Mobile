@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, unused_import, implementation_imports, unnecessary_import
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bkol_mobile/pages/homescreen/lowongan.dart';
-import 'package:bkol_mobile/pages/widgets/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -104,18 +104,20 @@ class _ListLowonganHomeState extends State<ListLowonganHome> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    AutoSizeText(
                       "${gridLowongan.elementAt(index)['title']}",
-                      style: Theme.of(context).textTheme.titleMedium!.merge(
+                      style: Theme.of(context).textTheme.titleSmall!.merge(
                             TextStyle(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
+                      maxLines: 2,
+                      minFontSize: 12,
                     ),
                     SizedBox(
                       height: 8,
                     ),
-                    Text(
+                    AutoSizeText(
                       "${gridLowongan.elementAt(index)['perusahaan']}",
                       style: Theme.of(context).textTheme.labelSmall!.merge(
                             TextStyle(
@@ -123,11 +125,12 @@ class _ListLowonganHomeState extends State<ListLowonganHome> {
                               color: Colors.grey.shade500,
                             ),
                           ),
+                      maxLines: 2,
                     ),
                     SizedBox(
                       height: 8,
                     ),
-                    Text(
+                    AutoSizeText(
                       "${gridLowongan.elementAt(index)['lokasi']}",
                       style: Theme.of(context).textTheme.labelSmall!.merge(
                             TextStyle(
@@ -135,6 +138,7 @@ class _ListLowonganHomeState extends State<ListLowonganHome> {
                               color: Colors.grey.shade500,
                             ),
                           ),
+                      maxLines: 2,
                     ),
                     SizedBox(
                       height: 8,
@@ -154,12 +158,13 @@ class _ListLowonganHomeState extends State<ListLowonganHome> {
                               ),
                             ),
                             onPressed: () {},
-                            child: Text(
+                            child: AutoSizeText(
                               "Read More",
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 12,
                               ),
+                              maxLines: 1,
                             ),
                           ),
                         ),

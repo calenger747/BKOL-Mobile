@@ -6,11 +6,46 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ListLowonganAll extends StatelessWidget {
-  const ListLowonganAll({super.key});
+  final String title;
+  final String page;
+  const ListLowonganAll({super.key, required this.title, required this.page});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          title,
+          style: TextStyle(
+            fontSize: 22,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: Icon(Icons.notifications_rounded),
+        //     color: Colors.black,
+        //   ),
+        //   IconButton(
+        //     onPressed: () {
+        //       _scaffoldKey.currentState?.openDrawer();
+        //     },
+        //     icon: Icon(Icons.menu),
+        //     color: Colors.black,
+        //   ),
+        // ],
+      ),
       backgroundColor: Colors.indigo.shade50,
       body: ListView(
         // mainAxisAlignment: MainAxisAlignment.start,
