@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -113,7 +114,14 @@ class _ListPerusahaanState extends State<ListPerusahaan> {
               itemCount: listPerusahaan.length,
               itemBuilder: (_, index) {
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    _bottomSheetRegistration(
+                        context,
+                        listPerusahaan.elementAt(index)['title'],
+                        listPerusahaan.elementAt(index)['images'],
+                        listPerusahaan.elementAt(index)['telp'],
+                        listPerusahaan.elementAt(index)['alamat']);
+                  },
                   child: Card(
                     margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     elevation: 5.0,
@@ -177,6 +185,192 @@ class _ListPerusahaanState extends State<ListPerusahaan> {
           ),
         ],
       ),
+    );
+  }
+
+  _bottomSheetRegistration(
+      context, String title, String images, String telp, String alamat) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return Wrap(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue.shade400,
+                    ),
+                  ),
+                ),
+                Divider(
+                  height: 4,
+                ),
+                SizedBox(
+                  height: 200,
+                  width: 250,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    clipBehavior: Clip.none,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      Image(
+                        image: AssetImage(images),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Table(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    columnWidths: {
+                      0: FractionColumnWidth(0.40),
+                      1: FractionColumnWidth(0.60),
+                    },
+                    children: [
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Bidang Perusahaan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Manufacturing",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Alamat Perusahaan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                alamat,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Telp",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                telp,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Email",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "SMK / MAK / ALL",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  height: 2,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          ],
+        );
+      },
     );
   }
 }

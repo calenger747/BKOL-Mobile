@@ -6,7 +6,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilUserPic extends StatelessWidget {
-  const ProfilUserPic({super.key});
+  final AssetImage images;
+  const ProfilUserPic({super.key, required this.images});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ProfilUserPic extends StatelessWidget {
         // ignore: prefer_const_literals_to_create_immutables
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage("assets/images/8.jpg"),
+            backgroundImage: images,
           ),
           Positioned(
             right: -16,

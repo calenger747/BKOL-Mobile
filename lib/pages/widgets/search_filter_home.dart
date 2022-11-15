@@ -35,6 +35,8 @@ class _FilterLokerHomeState extends State<FilterLokerHome> {
         children: [
           TextFormField(
             decoration: InputDecoration(
+              isDense: true, // important line
+              contentPadding: EdgeInsets.fromLTRB(10, 30, 10, 0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(10),
@@ -55,6 +57,8 @@ class _FilterLokerHomeState extends State<FilterLokerHome> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButtonFormField<String>(
                       decoration: InputDecoration(
+                        isDense: true, // important line
+                        contentPadding: EdgeInsets.fromLTRB(10, 25, 10, 0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
@@ -79,6 +83,8 @@ class _FilterLokerHomeState extends State<FilterLokerHome> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButtonFormField<String>(
                       decoration: InputDecoration(
+                        isDense: true, // important line
+                        contentPadding: EdgeInsets.fromLTRB(10, 25, 10, 0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),

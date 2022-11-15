@@ -6,6 +6,7 @@ import 'package:bkol_mobile/pages/homescreen/profile_user/profile_user.dart';
 import 'package:bkol_mobile/pages/homescreen/settings_menu/profil_pic.dart';
 import 'package:bkol_mobile/pages/homescreen/settings_menu/profile_menu.dart';
 import 'package:bkol_mobile/pages/login_page.dart';
+import 'package:bkol_mobile/pages/perusahaan/profil_perusahaan/profil_perusahaan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -34,11 +35,18 @@ class BodyProfile extends StatelessWidget {
               );
             },
           ),
-          // ProfileMenu(
-          //   text: "Profil Perusahaan",
-          //   icon: "assets/images/icon/User Icon.svg",
-          //   press: () => {},
-          // ),
+          ProfileMenu(
+            text: "Profil Perusahaan",
+            icon: "assets/images/icon/office-svgrepo-com.svg",
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ProfileDataPerusahaan(),
+                ),
+              );
+            },
+          ),
           ProfileMenu(
             text: "Riwayat Lamaran",
             icon: "assets/images/icon/receipt.svg",

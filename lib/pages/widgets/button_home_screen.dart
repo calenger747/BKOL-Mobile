@@ -4,7 +4,9 @@ import 'package:bkol_mobile/pages/homescreen/information_page.dart';
 import 'package:bkol_mobile/pages/homescreen/lowongan.dart';
 import 'package:bkol_mobile/pages/homescreen/training_page.dart';
 import 'package:bkol_mobile/pages/login_page.dart';
-import 'package:bkol_mobile/pages/register_page.dart';
+import 'package:bkol_mobile/pages/register/register_ak.dart';
+import 'package:bkol_mobile/pages/register/register_page.dart';
+import 'package:bkol_mobile/pages/register/register_perusahaan.dart';
 import 'package:bkol_mobile/pages/widgets/list_lowongan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -43,10 +45,7 @@ class _MyButtonState extends State<MyButton> {
                 backgroundColor: Colors.blue.shade100,
                 onPressed: () {
                   if (widget.state == 1) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
-                    );
+                    _bottomSheetRegistration(context);
                   } else if (widget.state == 2) {
                     Navigator.push(
                       context,
@@ -116,7 +115,13 @@ class _MyButtonState extends State<MyButton> {
                   height: 4,
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterPencaker()),
+                    );
+                  },
                   leading: Image.asset(
                     'assets/images/icons/job-seeker.png',
                     height: 40,
@@ -132,7 +137,13 @@ class _MyButtonState extends State<MyButton> {
                   height: 2,
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterPerusahaan()),
+                    );
+                  },
                   leading: Image.asset(
                     'assets/images/icons/office-building.png',
                     height: 40,

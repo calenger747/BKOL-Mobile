@@ -1,0 +1,23 @@
+{
+    "previous": "Some URL for previous page",
+    "next": "Some URL for previous page",
+    "status": 200,
+    "result": [
+        {
+            "no": "1.",
+            "bahasa": "Indonesia"
+        },
+        {
+            "no": "2.",
+            "bahasa": "Inggris"
+        },
+        {
+            "no": "3.",
+            "bahasa": "Jepang"
+        },
+        {
+            "no": "4.",
+            "bahasa": "Mandarin"
+        }
+    ]
+}

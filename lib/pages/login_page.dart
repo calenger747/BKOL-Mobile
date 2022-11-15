@@ -4,7 +4,9 @@ import 'dart:ui';
 
 import 'package:bkol_mobile/main.dart';
 import 'package:bkol_mobile/pages/forgot_password.dart';
-import 'package:bkol_mobile/pages/register_page.dart';
+import 'package:bkol_mobile/pages/register/register_ak.dart';
+import 'package:bkol_mobile/pages/register/register_page.dart';
+import 'package:bkol_mobile/pages/register/register_perusahaan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -188,12 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           TextButton(
                             onPressed: () {
-                              // _bottomSheetRegistration(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterPage()),
-                              );
+                              _bottomSheetRegistration(context);
                             },
                             child: _signUpLabel("Daftar", Color(0xff164276)),
                           ),
@@ -247,7 +244,13 @@ class _LoginPageState extends State<LoginPage> {
                   height: 4,
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterPencaker()),
+                    );
+                  },
                   leading: Image.asset(
                     'assets/images/icons/job-seeker.png',
                     height: 40,
@@ -263,7 +266,13 @@ class _LoginPageState extends State<LoginPage> {
                   height: 2,
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterPerusahaan()),
+                    );
+                  },
                   leading: Image.asset(
                     'assets/images/icons/office-building.png',
                     height: 40,

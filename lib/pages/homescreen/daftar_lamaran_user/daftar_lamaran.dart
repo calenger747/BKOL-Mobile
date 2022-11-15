@@ -34,20 +34,14 @@ class _DaftarLamaranUserState extends State<DaftarLamaranUser> {
             color: Colors.black,
           ),
         ),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {},
-        //     icon: Icon(Icons.notifications_rounded),
-        //     color: Colors.black,
-        //   ),
-        //   IconButton(
-        //     onPressed: () {
-        //       _scaffoldKey.currentState?.openDrawer();
-        //     },
-        //     icon: Icon(Icons.menu),
-        //     color: Colors.black,
-        //   ),
-        // ],
+        // ignore: prefer_const_literals_to_create_immutables
+        actions: [
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(Icons.add_sharp),
+          //   color: Colors.black,
+          // ),
+        ],
       ),
       backgroundColor: Colors.indigo.shade50,
       body: BodyDaftarLamaranUser(),

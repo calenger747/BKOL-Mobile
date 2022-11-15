@@ -1,0 +1,61 @@
+{
+    "previous": "Some URL for previous page",
+    "next": "Some URL for previous page",
+    "status": 200,
+    "result": [
+        {
+            "no": "1.",
+            "nama_perusahaan": "RS Sentra Medika Cisalak",
+            "jabatan": "Apoteker",
+            "uraian_kerja": "Apoteker",
+            "tgl_masuk": "2016-09-07",
+            "tgl_berhenti": "2018-09-07",
+            "status": true
+        },
+        {
+            "no": "2.",
+            "nama_perusahaan": "Pt Xacti Indonesia",
+            "jabatan": "Operator Produksi",
+            "uraian_kerja": "Operator Produksi",
+            "tgl_masuk": "2016-09-07",
+            "tgl_berhenti": "2018-09-07",
+            "status": false
+        },
+        {
+            "no": "3.",
+            "nama_perusahaan": "PT Armada Auto Tara Daihatsu Depok",
+            "jabatan": "Praktek kerja lapangan",
+            "uraian_kerja": "Praktek kerja lapangan",
+            "tgl_masuk": "2016-09-07",
+            "tgl_berhenti": "2018-09-07",
+            "status": true
+        },
+        {
+            "no": "4.",
+            "nama_perusahaan": "Indomaret",
+            "jabatan": "Kasir",
+            "uraian_kerja": "Kasir",
+            "tgl_masuk": "2016-09-07",
+            "tgl_berhenti": "2018-09-07",
+            "status": false
+        },
+        {
+            "no": "5.",
+            "nama_perusahaan": "PT Pfizer Indonesia",
+            "jabatan": "Packer",
+            "uraian_kerja": "Packer",
+            "tgl_masuk": "2016-09-07",
+            "tgl_berhenti": "2018-09-07",
+            "status": true
+        },
+        {
+            "no": "6.",
+            "nama_perusahaan": "PT. TIRTA VARIA INTIPRATAMA",
+            "jabatan": "CHECKER & OPERATOR FORKLIFT",
+            "uraian_kerja": "CHECKER & OPERATOR FORKLIFT",
+            "tgl_masuk": "2016-09-07",
+            "tgl_berhenti": "2018-09-07",
+            "status": false
+        }
+    ]
+}

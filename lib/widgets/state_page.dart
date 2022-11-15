@@ -48,6 +48,9 @@ class _StatePageState extends State<StatePage> {
         ),
       );
       _launchWhatsapp(number: "+6285158255512", message: "Hello");
+    } else if (widget.page == "chat2") {
+      Navigator.pop(context);
+      _launchWhatsapp(number: "+6285158255512", message: "Hello");
     }
   }
 

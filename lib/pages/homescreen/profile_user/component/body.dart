@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bkol_mobile/pages/homescreen/change_password/change_password.dart';
-import 'package:bkol_mobile/pages/homescreen/profile_user/component/profil_pic.dart';
+import 'package:bkol_mobile/pages/homescreen/profile_user/component/profil_data_user.dart';
+import 'package:bkol_mobile/pages/widgets/profil_pic.dart';
 import 'package:bkol_mobile/pages/homescreen/profile_user/component/profile_bahasa.dart';
 import 'package:bkol_mobile/pages/homescreen/profile_user/component/profile_menu.dart';
+import 'package:bkol_mobile/pages/homescreen/profile_user/component/profile_pengalaman_kerja.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,12 +20,19 @@ class ProfileUserBody extends StatelessWidget {
       child: Column(
         // ignore: prefer_const_literals_to_create_immutables
         children: [
-          ProfilUserPic(),
+          ProfilUserPic(images: AssetImage("assets/images/8.jpg")),
           SizedBox(height: 20),
           ProfileUserMenu(
             text: "Profil Pencari Kerja",
             icon: "assets/images/icon/User Icon.svg",
-            press: () => {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ProfileDataUser(),
+                ),
+              );
+            },
           ),
           // ProfileMenu(
           //   text: "Profil Perusahaan",
@@ -45,7 +54,14 @@ class ProfileUserBody extends StatelessWidget {
           ProfileUserMenu(
             text: "Pengalaman Kerja",
             icon: "assets/images/icon/work-svgrepo-com.svg",
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ProfilPengalamanUser(),
+                ),
+              );
+            },
           ),
         ],
       ),

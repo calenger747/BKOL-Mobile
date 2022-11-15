@@ -2,10 +2,12 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bkol_mobile/pages/homescreen/lowongan.dart';
+import 'package:bkol_mobile/widgets/state_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ListLowonganHome extends StatefulWidget {
@@ -157,7 +159,15 @@ class _ListLowonganHomeState extends State<ListLowonganHome> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              _bottomSheetRegistration(
+                                context,
+                                gridLowongan.elementAt(index)['title'],
+                                gridLowongan.elementAt(index)['images'],
+                                gridLowongan.elementAt(index)['perusahaan'],
+                                gridLowongan.elementAt(index)['lokasi'],
+                              );
+                            },
                             child: AutoSizeText(
                               "Read More",
                               style: TextStyle(
@@ -184,11 +194,19 @@ class _ListLowonganHomeState extends State<ListLowonganHome> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            onPressed: () {},
-                            child: Icon(
-                              Icons.share_sharp,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      StatePage(page: 'chat2'),
+                                ),
+                              );
+                            },
+                            child: SvgPicture.asset(
+                              "assets/images/icon/whatsapp-svgrepo-com.svg",
                               color: Colors.black,
-                              size: 12,
+                              width: 12,
                             ),
                           ),
                         ),
@@ -199,6 +217,410 @@ class _ListLowonganHomeState extends State<ListLowonganHome> {
               ),
             ],
           ),
+        );
+      },
+    );
+  }
+
+  _bottomSheetRegistration(
+      context, String title, String images, String perusahaan, String alamat) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return Wrap(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue.shade400,
+                    ),
+                  ),
+                ),
+                Divider(
+                  height: 4,
+                ),
+                SizedBox(
+                  height: 200,
+                  width: 250,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    clipBehavior: Clip.none,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      Image(
+                        image: AssetImage(images),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Table(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    columnWidths: {
+                      0: FractionColumnWidth(0.40),
+                      1: FractionColumnWidth(0.60),
+                    },
+                    children: [
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Posisi Jabatan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Staff",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Nama Perusahaan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                perusahaan,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Alamat Perusahaan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                alamat,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Pendidikan Minimal",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "SMK / MAK / ALL",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Jml Pria Dibutuhkan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "10 Orang",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Jml Wanita Dibutuhkan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "0 Orang",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Batas Umur",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "24 Tahun",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Tahapan Seleksi",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "12/04/2022 - 31/12/2022",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Pengumuman Penerimaan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "12/04/2022 - 31/12/2022",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "Lokasi Penempatan",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              child: AutoSizeText(
+                                "CABANG BOGOR2",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  height: 2,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(width: 10),
+                        SizedBox(
+                          height: 35,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.greenAccent,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 0),
+                              textStyle: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: AutoSizeText(
+                              "Kirim Lamaran",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                              ),
+                              maxLines: 1,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          ],
         );
       },
     );

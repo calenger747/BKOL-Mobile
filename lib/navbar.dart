@@ -6,6 +6,8 @@ import 'package:bkol_mobile/pages/homescreen/lowongan.dart';
 import 'package:bkol_mobile/pages/homescreen/settings_page.dart';
 import 'package:bkol_mobile/pages/homescreen/training_page.dart';
 import 'package:bkol_mobile/pages/login_page.dart';
+import 'package:bkol_mobile/pages/perusahaan/daftar_lowongan/lowongan_perusahaan.dart';
+import 'package:bkol_mobile/pages/perusahaan/status_lowongan/status_lowongan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -119,6 +121,27 @@ class NavBar extends StatelessWidget {
             leading: Icon(Icons.business_rounded),
             title: Text("P3MI"),
             onTap: () => _launchUrl(urlP3MI),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.newspaper),
+            title: Text("Daftar Lowongan Kerja"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LowonganPerusahaan()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.fact_check_sharp),
+            title: Text("Daftar Status Lowongan Kerja"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => StatusLowongan()),
+              );
+            },
           ),
           Divider(),
           ListTile(

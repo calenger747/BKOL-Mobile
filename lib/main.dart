@@ -5,12 +5,14 @@ import 'package:bkol_mobile/pages/homescreen/list_perusahaan.dart';
 import 'package:bkol_mobile/pages/homescreen/lowongan.dart';
 import 'package:bkol_mobile/pages/homescreen/home_page.dart';
 import 'package:bkol_mobile/pages/homescreen/information_page.dart';
+import 'package:bkol_mobile/pages/homescreen/notification/notification_page.dart';
 import 'package:bkol_mobile/pages/login_page.dart';
 import 'package:bkol_mobile/pages/widgets/appbar_home.dart';
 import 'package:bkol_mobile/widgets/state_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,10 +26,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bursa Kerja Online Dinas Tenaga Kerja Depok',
+      builder: (context, child) => ResponsiveWrapper.builder(
+        BouncingScrollWrapper.builder(context, child!),
+        maxWidth: 1200,
+        minWidth: 450,
+        defaultScale: true,
+        breakpoints: [
+          const ResponsiveBreakpoint.resize(450, name: MOBILE),
+          const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+          const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+          const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+          const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+        ],
+      ),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'BURSA KERJA ONLINE'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -90,7 +106,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NotificationPage()),
+              );
+            },
             icon: Icon(Icons.notifications_rounded),
             color: Colors.black,
           ),
